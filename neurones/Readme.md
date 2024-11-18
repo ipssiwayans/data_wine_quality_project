@@ -4,7 +4,7 @@
 Les exemples que vous utilisez ont des valeurs complexes et variées (densité, pH, alcool, etc.). Certaines caractéristiques pourraient jouer un rôle important pour le MLP mais être négligées par le neurone simple.
 
 ### Exemple de données d'entrée
-- Chablis : [7.0, 0.3, 0.4, 1.2, 0.045, 15.0, 75.0, 0.992, 3.35, 0.7, 11.5]
+- Chablis : [7.0, 0.3, 0.4, 1.2, 0.045, 15.0, 75.0, 0.992, 3.35, 0.7, 12.5]
 - La Turque : [6.5, 0.4, 0.35, 1.8, 0.05, 18.0, 85.0, 0.994, 3.65, 0.75, 13.5]
 - Monbazillac : [5.5, 0.3, 0.4, 120.0, 0.05, 35.0, 150.0, 1.020, 3.6, 0.6, 13.0]
 
