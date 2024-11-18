@@ -5,6 +5,8 @@ Ce projet utilise des techniques de machine learning pour prédire la qualité d
 Le dataset utilisé provient d'une base de données Kaggle. 
 https://www.kaggle.com/datasets/yasserh/wine-quality-dataset?select=WineQT.csv
 
+## PARTIE 1
+
 ## 1. Première Étude : Utilisation des variables "density" et "alcohol"
 
 Dans un premier temps, nous avons utilisé les variables **density** et **alcohol** pour essayer de prédire la qualité du vin. Voici la représentation de cette première étude :
@@ -103,3 +105,89 @@ De plus, les prédictions obtenues ont été vérifiées à l'aide d'un **decisi
 
 Cette étude montre que l'utilisation des variables **alcohol**, **sulphates** et **citric acid** permet de bien prédire la qualité des vins. L'arbre de décision et le réseau de neurones ont tous les deux permis d'obtenir des résultats satisfaisants.
 
+
+## PARTIE 2
+
+## Algorithme KMEANS
+Rappel sur le kmeans : algorithme d'apprentissage non supervisé utilisé pour regrouper (ou "cluster") des données en K groupes distincts
+L'objectif est de regrouper des données similaires dans un même cluster pour identifier les différentes tendances et analyser les données
+
+# Premier cas d'étude : choix des critères 'fixed acidity' et 'alcohol'
+
+# 4 clusters
+
+![kmeans 4 clusters](./k_means/kmeans_4clusters_acidity_alcohol.png)
+
+Intérêt des critères fixed acidity et alchool :
+permet un regroupement des vins sur base des propriétés physico-chimiques qui influencent le style : léger, corsé, acide, doux etc 
+
+Principe : les vins sont regroupés en 4 clusters selon leur acidité fixe et leur taux d'alcool
+Chaque cluster regroupe des vins aux caractéristiques similaires
+Le graphique permet de visualiser ces groupes et leur position par rapport aux centroïdes
+
+Lecture du K = 4 :
+
+Cluster 1 (rouge) :
+Correspond aux vins avec une acidité fixe relativement faible (environ 6 à 8) et un taux d’alcool faible (entre 9 et 11).
+Cluster compact, indiquant une certaine homogénéité dans ces caractéristiques.
+
+Cluster 2 (jaune) :
+Concerne des vins ayant une acidité légèrement supérieure (environ 7 à 10) et un taux d’alcool moyen (environ 10 à 13).
+Les points sont légèrement plus dispersés, ce qui peut indiquer une plus grande variété parmi les vins de ce groupe.
+
+Cluster 3 (vert) :
+Ces vins ont une acidité fixe modérée (environ 8 à 11) et un taux d’alcool similaire au Cluster 2 (10 à 13).
+Le chevauchement avec Cluster 2 montre qu’il peut être difficile de distinguer ces deux groupes.
+
+Cluster 4 (bleu) :
+Situé à l’extrême droite, sur la zone des acidités les plus élevées (12 à 16) et un taux d’alcool modéré (10 à 15).
+Cluster très dispersé, ce qui indique une grande diversité parmi ces vins.
+
+
+Chevauchement Cluster 2 (jaune) et Cluster 3 (vert) :
+La frontière entre ces deux groupes n'est pas clairement définie. Cela peut indiquer que les caractéristiques "fixed acidity" et "alcohol" ne suffisent pas toujours à bien séparer ces vins.
+
+Dispersions dans le Cluster 4 (bleu) :
+Les points sont très éloignés du centroïde, ce qui montre une diversité élevée dans ce groupe. Cela pourrait être dû à des sous-groupes non détectés ou à des variations importantes dans les caractéristiques choisies.
+ 
+Les vins avec une faible acidité et un faible taux d'alcool (Cluster 1) forment un groupe distinct et homogène.
+Les vins ayant une acidité élevée (Cluster 4) sont plus variés, ce qui peut indiquer une plus grande diversité dans leurs caractéristiques chimiques ou de production.
+Les clusters 2 et 3 montrent qu'il y a une transition progressive entre des acidités et taux d'alcool modérés, rendant leur séparation moins nette.
+
+# 2 clusters
+![kmeans 2 clusters](./k_means/kmeans_2clusters_acidity_alcohol.png)
+
+
+# 8 clusters
+![kmeans 8 clusters](./k_means/kmeans_8clustes_acidity_quality.png)
+
+
+# 3D clusters
+![kmeans 3D clusters](./k_means/kmeans_3D_8clusters_acidity_alcohol_quality)
+
+# KNN 
+
+Comprendre le KNN :
+Contrairement au K-Means qui est non supervisé, KNN est un algorithme supervisé.
+Il est utilisé pour classifier des points (ou prédire une valeur numérique, si c'est un problème de régression) en se basant sur les classes ou valeurs de ses voisins les plus proches.
+
+![kmeans 3D clusters](./k_means/KNN)
+![kmeans 3D clusters](./k_means/KNN_2D)
+
+Analyse rapide du graphique :
+Le modèle KNN a une précision modérée (0.59), ce qui montre qu’il n’est pas encore optimal pour capturer toute la complexité des données. Cela peut être dû à une séparation non linéaire ou à un manque de données équilibrées entre les classes.
+Cependant, certaines classes restent mal représentées ou mal prédites, ce qui peut indiquer la nécessité d’ajuster davantage les hyperparamètres (comme le choix de 
+k) ou de tester voir compléter avec d'autres algorithmes comme les arbres de décision vu plus haut.
+
+## CONCLUSION DU PROJET
+Ce projet met en évidence les forces et les limites des différents modèles de classification, tout en illustrant l'importance de sélectionner les bonnes variables et de valider les prédictions à l'aide de méthodes complémentaires.
+
+L'utilisation des variables alcohol, sulphates et citric acid s'est révélée pertinente pour prédire la qualité des vins. Ces caractéristiques offrent une bonne séparation des classes, bien que des défis persistent pour certaines qualités proches.
+
+Le neurone simple offre une solution rapide et intuitive, mais sa capacité limitée à tracer uniquement des frontières de décision linéaires le rend inadapté à des données complexes et non linéaires, comme celles du vin.
+
+En revanche, le MLP (Multi-Layer Perceptron), grâce à ses couches cachées et ses fonctions d'activation, exploite les relations non linéaires entre les caractéristiques. Cela en fait un outil puissant et plus adapté pour prédire des classes de qualité avec des relations complexes.
+
+L'étude a également validé les prédictions à l'aide d'un decision tree appliqué sur des exemples spécifiques (Chablis, La Turque, Monbazillac), confirmant la cohérence des résultats et la fiabilité des données utilisées.
+
+En conclusion, l'approche combinée des modèles, en particulier avec des techniques comme le MLP et les arbres de décision, permet d'obtenir des résultats satisfaisants pour prédire la qualité des vins, tout en soulignant l'importance des variables sélectionnées pour la tâche.
