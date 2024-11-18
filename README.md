@@ -25,7 +25,7 @@ Ces trois variables ont montré une forte corrélation avec la qualité du vin.
 
 ## 3. Arbre de Décision avec les Nouvelles Variables
 
-En se basant sur l'analyse de corrélation, un nouvel arbre de décision a été construit en utilisant les variables sélectionnées. Voici l'arbre de décision final :
+En se basant sur l'analyse de corrélation, un nouvel arbre de décision a été construit avec une **profondeur de 6** en utilisant les variables sélectionnées. Voici l'arbre de décision final :
 
 ![Arbre de décision](./decision_tree/decision_tree.png)
 
