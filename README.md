@@ -11,7 +11,7 @@ Dans un premier temps, nous avons utilisé les variables **density** et **alcoho
 
 ![Première étude](./decision_tree/old_output.png)
 
-## 2. Analyse de la Corrélation
+## 2. Matrice de Corrélation
 
 Pour améliorer les performances du modèle, une matrice de corrélation a été calculée afin de sélectionner les variables les plus influentes sur la qualité du vin. Les variables retenues sont :
 
