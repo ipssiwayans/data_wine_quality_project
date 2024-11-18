@@ -1,47 +1,39 @@
-# Projet UI : Analyse de la Qualité des Vins
 
-Ce projet est un exercice scolaire ayant pour but d'appliquer nos connaissances sur des algorithmes de Machine Learning, en utilisant des datasets provenant de Kaggle, plus précisément sur la qualité des vins. Nous avons choisi ce sujet car la qualité du vin nous semblait un problème pertinent et intéressant à modéliser.
+# Étude de Prédiction de la Qualité du Vin
 
-## Structure du Projet
-Le projet est organisé en trois dossiers principaux, chacun correspondant à un modèle différent :
+Ce projet utilise des techniques de machine learning pour prédire la qualité des vins.
+Le dataset utilisé provient d'une base de données Kaggle. 
+https://www.kaggle.com/datasets/yasserh/wine-quality-dataset?select=WineQT.csv
 
-1. **KMeans** : Ce dossier contient les fichiers relatifs à l'algorithme de clustering KMeans appliqué aux données de qualité des vins. L'objectif est de grouper les différents types de vins selon leurs caractéristiques.
+## 1. Première Étude : Utilisation des variables "density" et "alcohol"
 
-2. **Decision Tree** : Ce dossier contient l'implémentation d'un arbre de décision pour prédire la qualité des vins en fonction de leurs caractéristiques. Cela permet de comprendre les critères clés influençant la qualité des vins et de visualiser le processus de décision.
+Dans un premier temps, nous avons utilisé les variables **density** et **alcohol** pour essayer de prédire la qualité du vin. Voici la représentation de cette première étude :
 
-3. **Neurones** : Ce dossier est consacré à l'utilisation d'un réseau de neurones artificiels pour prédire la qualité des vins. Nous avons exploré la précision des réseaux de neurones comparée aux autres approches pour ce problème.
+![Première étude](./decision_tree/old_output.png)
 
-## Dataset Utilisé
-Les données proviennent du dataset "Wine Quality" disponible sur Kaggle. Ce dataset contient des informations sur plusieurs types de vins (rouge et blanc), tels que l'acidité, le pH, la teneur en alcool, etc. Ces caractéristiques ont été utilisées pour prédire la qualité du vin, qui est notée de 0 à 10.
+## 2. Matrice de Corrélation
 
-## Objectifs du Projet
-- Appliquer les connaissances sur les modèles de Machine Learning appris en cours.
-- Comparer différentes approches (clustering, classification par arbre de décision, et réseaux de neurones).
-- Comprendre l'impact des différentes caractéristiques sur la qualité des vins.
+Pour améliorer les performances du modèle, une matrice de corrélation a été calculée afin de sélectionner les variables les plus influentes sur la qualité du vin. Les variables retenues sont :
 
-## Prérequis
-Pour exécuter ce projet, vous aurez besoin de :
-- Python 3.x
-- Bibliothèques : `pandas`, `numpy`, `sklearn`, `matplotlib`, `tensorflow` (pour les réseaux de neurones).
+- **alcohol**
+- **sulphates**
+- **citric acid**
 
-## Instructions d'Utilisation
-1. Clonez ce repository :
-   ```bash
-   git clone <lien_du_repository>
-   ```
-2. Installez les dépendances :
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Naviguez dans le dossier de votre choix (KMeans, Decision Tree, ou Neurones) et exécutez les scripts pour voir les différents résultats.
+![Matrice de Corrélation](./decision_tree/matrice_de_correlation.png)
 
-## Auteurs
-Ce projet a été réalisé par une équipe d'étudiants souhaitant mettre en pratique leurs compétences en Machine Learning.
+Ces trois variables ont montré une forte corrélation avec la qualité du vin.
 
-## Remerciements
-Nous remercions Kaggle pour la mise à disposition des données ainsi que notre école pour l'encadrement de ce projet.
+## 3. Arbre de Décision avec les Nouvelles Variables
 
----
+En se basant sur l'analyse de corrélation, un nouvel arbre de décision a été construit avec une **profondeur de 6** en utilisant les variables sélectionnées. Voici l'arbre de décision final :
 
-N'hésitez pas à nous contacter si vous avez des questions ou des suggestions pour améliorer ce projet !
+![Arbre de décision](./decision_tree/decision_tree.png)
+
+## 4. Réseau de Neurones
+
+En complément de l'arbre de décision, un réseau de neurones a été implémenté pour tester la prédiction de la qualité sur plusieurs échantillons de vins. Les résultats obtenus avec le réseau de neurones étaient en accord avec ceux de l'arbre de décision, confirmant la pertinence des variables sélectionnées.
+
+## Conclusion
+
+Cette étude montre que l'utilisation des variables **alcohol**, **sulphates** et **citric acid** permet de bien prédire la qualité des vins. L'arbre de décision et le réseau de neurones ont tous les deux permis d'obtenir des résultats satisfaisants.
 
