@@ -17,13 +17,15 @@ Pour améliorer les performances du modèle, une matrice de corrélation a été
 - **sulphates**
 - **citric acid**
 
+![Matrice de Corrélation](./decision_tree/matrice_de_correlation.png)
+
 Ces trois variables ont montré une forte corrélation avec la qualité du vin.
 
 ## 3. Arbre de Décision avec les Nouvelles Variables
 
 En se basant sur l'analyse de corrélation, un nouvel arbre de décision a été construit en utilisant les variables sélectionnées. Voici l'arbre de décision final :
 
-![Arbre de décision](./decision_tree/decision_tree.ipynb)
+![Arbre de décision](./decision_tree/decision_tree.png)
 
 ## 4. Réseau de Neurones
 
