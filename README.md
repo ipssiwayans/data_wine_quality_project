@@ -91,25 +91,12 @@ Ces exemples ont été soumis au modèle MLP pour prédire leur qualité. De plu
 
 Cette validation croisée a renforcé la confiance dans les résultats et a démontré que les modèles étaient capables d'identifier correctement des vins spécifiques en fonction de leurs caractéristiques chimiques.
 
-## Conclusion
-
-Ce projet met en lumière les forces et les faiblesses des modèles de neurones simples et des MLP dans la classification, tout en montrant l'importance de la validation croisée avec d'autres modèles.
-
-- Le **neurone simple** offre une solution rapide et intuitive, mais reste limité par sa capacité à tracer uniquement des frontières de décision linéaires. Cela le rend moins efficace pour des données complexes et non linéaires, comme celles utilisées dans ce projet.
-
-- En revanche, le **MLP (Multi-Layer Perceptron)** permet d'exploiter des relations non linéaires entre les caractéristiques, grâce à ses couches cachées et ses fonctions d'activation. Cela en fait un outil beaucoup plus puissant et adapté pour ce type de tâche.
-
-De plus, les prédictions obtenues ont été vérifiées à l'aide d'un **decision tree** sur des exemples spécifiques (Chablis, La Turque, Monbazillac). Cette validation croisée a confirmé la cohérence des résultats et la fiabilité des données utilisées.
-
-## Conclusion
-
-Cette étude montre que l'utilisation des variables **alcohol**, **sulphates** et **citric acid** permet de bien prédire la qualité des vins. L'arbre de décision et le réseau de neurones ont tous les deux permis d'obtenir des résultats satisfaisants.
 
 
 ## PARTIE 2
 
 ## Algorithme KMEANS
-Rappel sur le kmeans : algorithme d'apprentissage non supervisé utilisé pour regrouper (ou "cluster") des données en K groupes distincts
+Rappel sur le kmeans : algorithme d'apprentissage non supervisé, descriptif, utilisé pour regrouper (ou "cluster") des données en K groupes distincts
 L'objectif est de regrouper des données similaires dans un même cluster pour identifier les différentes tendances et analyser les données
 
 # Premier cas d'étude : choix des critères 'fixed acidity' et 'alcohol'
@@ -157,22 +144,27 @@ Les clusters 2 et 3 montrent qu'il y a une transition progressive entre des acid
 # 2 clusters
 ![kmeans 2 clusters](./k_means/kmeans_2clusters_acidity_alcohol.png)
 
+Ce graphique illustre un clustering K-means en deux groupes basé sur les variables fixed acidity et alcohol :
+Les centroïdes (marqués par des croix noires) indiquent les moyennes des deux clusters, soulignant les différences significatives d'acidité entre eux.
+L'organisation montre une séparation assez nette mais avec quelques chevauchements qui pourraient être affinés avec plus de clusters ou des caractéristiques supplémentaires.
 
 # 8 clusters
 ![kmeans 8 clusters](./k_means/kmeans_8clustes_acidity_quality.png)
 
 
 # 3D clusters
-![kmeans 3D clusters](./k_means/kmeans_3D_8clusters_acidity_alcohol_quality)
+![kmeans 3D clusters](./k_means/kmeans_3D_8clusters_acidity_alcohol_quality.png)
 
+
+# Deuxième cas d'étude : choix des critères 'sulphates', 'citric acid' et 'alcohol'
 # KNN 
 
 Comprendre le KNN :
 Contrairement au K-Means qui est non supervisé, KNN est un algorithme supervisé.
 Il est utilisé pour classifier des points (ou prédire une valeur numérique, si c'est un problème de régression) en se basant sur les classes ou valeurs de ses voisins les plus proches.
 
-![kmeans 3D clusters](./k_means/KNN)
-![kmeans 3D clusters](./k_means/KNN_2D)
+![kmeans 3D clusters](./k_means/KNN.png)
+![kmeans 3D clusters](./k_means/KNN_2D.png)
 
 Analyse rapide du graphique :
 Le modèle KNN a une précision modérée (0.59), ce qui montre qu’il n’est pas encore optimal pour capturer toute la complexité des données. Cela peut être dû à une séparation non linéaire ou à un manque de données équilibrées entre les classes.
@@ -190,4 +182,6 @@ En revanche, le MLP (Multi-Layer Perceptron), grâce à ses couches cachées et 
 
 L'étude a également validé les prédictions à l'aide d'un decision tree appliqué sur des exemples spécifiques (Chablis, La Turque, Monbazillac), confirmant la cohérence des résultats et la fiabilité des données utilisées.
 
-En conclusion, l'approche combinée des modèles, en particulier avec des techniques comme le MLP et les arbres de décision, permet d'obtenir des résultats satisfaisants pour prédire la qualité des vins, tout en soulignant l'importance des variables sélectionnées pour la tâche.
+L'approche combinée des modèles, en particulier avec des techniques comme le MLP et les arbres de décision, permet d'obtenir des résultats satisfaisants pour prédire la qualité des vins, tout en soulignant l'importance des variables sélectionnées pour la tâche.
+
+Aussi, en explorant l'application des algorithmes de clustering (K-means) et de classification (KNN) pour analyser les vins en fonction de leurs propriétés physico-chimiques. Le K-means a permis de regrouper les vins en fonction de l'acidité fixe et du taux d'alcool, mettant en évidence des tendances claires et des chevauchements, notamment entre les clusters 2 et 3. L'approche KNN, quant à elle, a montré une précision modérée de 59 %, suggérant la nécessité d'affiner les paramètres ou de tester d'autres modèles pour une meilleure performance. Ce travail souligne l'importance de choisir des critères appropriés et d'ajuster les algorithmes pour mieux comprendre et classifier les données complexes. Il met aussi en lumière la complémentarité des algorithmes, comme la matrice de correlation mettant en lumière les critères pertinents à analyser dans un algorithme plus spécifique.
