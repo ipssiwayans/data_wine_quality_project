@@ -2,7 +2,8 @@
 # Étude de Prédiction de la Qualité du Vin
 
 Ce projet utilise des techniques de machine learning pour prédire la qualité des vins.
-Le dataset utilisé provient d'une base de données Kaggle -> https://www.kaggle.com/datasets/yasserh/wine-quality-dataset?select=WineQT.csv
+Le dataset utilisé provient d'une base de données Kaggle. 
+https://www.kaggle.com/datasets/yasserh/wine-quality-dataset?select=WineQT.csv
 
 ## 1. Première Étude : Utilisation des variables "density" et "alcohol"
 
